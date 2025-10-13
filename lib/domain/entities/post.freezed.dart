@@ -15,27 +15,29 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Post {
 
- int get userId; int get id; String get body; String get title;
+ int get userId; int get id; String get title; String get body;
 /// Create a copy of Post
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $PostCopyWith<Post> get copyWith => _$PostCopyWithImpl<Post>(this as Post, _$identity);
 
+  /// Serializes this Post to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Post&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.id, id) || other.id == id)&&(identical(other.body, body) || other.body == body)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Post&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,userId,id,body,title);
+int get hashCode => Object.hash(runtimeType,userId,id,title,body);
 
 @override
 String toString() {
-  return 'Post(userId: $userId, id: $id, body: $body, title: $title)';
+  return 'Post(userId: $userId, id: $id, title: $title, body: $body)';
 }
 
 
@@ -64,7 +66,7 @@ class _$PostCopyWithImpl<$Res>
 /// Create a copy of Post
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? userId = null,Object? id = null,Object? title = null,Object? body = null,}) {
-  return _then(Post(
+  return _then(_self.copyWith(
 userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
 as int,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
@@ -90,10 +92,11 @@ extension PostPatterns on Post {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Post value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _:
+case _Post() when $default != null:
+return $default(_that);case _:
   return orElse();
 
 }
@@ -111,10 +114,11 @@ case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Post value)  $default,){
 final _that = this;
 switch (_that) {
-case _:
+case _Post():
+return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -131,10 +135,11 @@ case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Post value)?  $default,){
 final _that = this;
 switch (_that) {
-case _:
+case _Post() when $default != null:
+return $default(_that);case _:
   return null;
 
 }
@@ -151,9 +156,10 @@ case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int userId,  int id,  String title,  String body)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _:
+case _Post() when $default != null:
+return $default(_that.userId,_that.id,_that.title,_that.body);case _:
   return orElse();
 
 }
@@ -171,9 +177,10 @@ case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>() {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int userId,  int id,  String title,  String body)  $default,) {final _that = this;
 switch (_that) {
-case _:
+case _Post():
+return $default(_that.userId,_that.id,_that.title,_that.body);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -190,13 +197,89 @@ case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>() {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int userId,  int id,  String title,  String body)?  $default,) {final _that = this;
 switch (_that) {
-case _:
+case _Post() when $default != null:
+return $default(_that.userId,_that.id,_that.title,_that.body);case _:
   return null;
 
 }
 }
+
+}
+
+/// @nodoc
+@JsonSerializable()
+
+class _Post implements Post {
+  const _Post({required this.userId, required this.id, required this.title, required this.body});
+  factory _Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+
+@override final  int userId;
+@override final  int id;
+@override final  String title;
+@override final  String body;
+
+/// Create a copy of Post
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PostCopyWith<_Post> get copyWith => __$PostCopyWithImpl<_Post>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$PostToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Post&&(identical(other.userId, userId) || other.userId == userId)&&(identical(other.id, id) || other.id == id)&&(identical(other.title, title) || other.title == title)&&(identical(other.body, body) || other.body == body));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,userId,id,title,body);
+
+@override
+String toString() {
+  return 'Post(userId: $userId, id: $id, title: $title, body: $body)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PostCopyWith<$Res> implements $PostCopyWith<$Res> {
+  factory _$PostCopyWith(_Post value, $Res Function(_Post) _then) = __$PostCopyWithImpl;
+@override @useResult
+$Res call({
+ int userId, int id, String title, String body
+});
+
+
+
+
+}
+/// @nodoc
+class __$PostCopyWithImpl<$Res>
+    implements _$PostCopyWith<$Res> {
+  __$PostCopyWithImpl(this._self, this._then);
+
+  final _Post _self;
+  final $Res Function(_Post) _then;
+
+/// Create a copy of Post
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? userId = null,Object? id = null,Object? title = null,Object? body = null,}) {
+  return _then(_Post(
+userId: null == userId ? _self.userId : userId // ignore: cast_nullable_to_non_nullable
+as int,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,body: null == body ? _self.body : body // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
 
 }
 

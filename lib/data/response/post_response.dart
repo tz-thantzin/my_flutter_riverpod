@@ -4,29 +4,14 @@ part 'post_response.freezed.dart';
 part 'post_response.g.dart';
 
 @freezed
-@JsonSerializable()
-class PostResponse with _$PostResponse {
-  const PostResponse({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.body,
-  });
-
-  @override
-  final int userId;
-
-  @override
-  final int id;
-
-  @override
-  final String body;
-
-  @override
-  final String title;
+abstract class PostResponse with _$PostResponse {
+  const factory PostResponse({
+    required int userId,
+    required int id,
+    required String title,
+    required String body,
+  }) = _PostResponse;
 
   factory PostResponse.fromJson(Map<String, dynamic> json) =>
       _$PostResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PostResponseToJson(this);
 }
