@@ -27,6 +27,7 @@ abstract class BaseAPI {
     try {
       // 2. Perform request
       final response = await call();
+
       // 3. Handle success
       if (response.statusCode == HttpStatus.ok) {
         final dynamic decoded = response.body.isNotEmpty
