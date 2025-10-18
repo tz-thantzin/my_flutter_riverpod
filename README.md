@@ -1,3 +1,5 @@
+[![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg)](https://buymeacoffee.com/devthantziq)
+
 # my_flutter_riverpod
 
 This project using Riverpod with clean architecture MVVM for flutter application
@@ -10,3 +12,8 @@ This project using Riverpod with clean architecture MVVM for flutter application
 - HTTP API integration (`http` package)
 - Generic `StateData<T>` for handling loading, success, error
 - Pull-to-refresh functionality
+
+------------------------------------------------------------------------
+## ❤️ Support
+
+Hi 👋 If you find this setup useful, you can [buy me a coffee](https://buymeacoffee.com/devthantziq) ☕ to support my work and make my sleepless nights easier.
